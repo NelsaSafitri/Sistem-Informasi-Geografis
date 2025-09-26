@@ -1,0 +1,168 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Universitas Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.8269,
+          -6.3659
+        ]
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "RSUD Kota Depok"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.8182,
+          -6.3947
+        ]
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Area UI"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              106.8265,
+              -6.3655
+            ],
+            [
+              106.8265,
+              -6.366
+            ],
+            [
+              106.8272,
+              -6.366
+            ],
+            [
+              106.8272,
+              -6.3655
+            ],
+            [
+              106.8265,
+              -6.3655
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "rs ui"
+      },
+      "geometry": {
+        "coordinates": [
+          106.8296619556005,
+          -6.372923951096837
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "rs ui"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              106.82905906225432,
+              -6.372304134481027
+            ],
+            [
+              106.82897364266239,
+              -6.373683635840308
+            ],
+            [
+              106.83036172109877,
+              -6.37372608149478
+            ],
+            [
+              106.8305752716924,
+              -6.372367803713431
+            ],
+            [
+              106.82905906225432,
+              -6.372304134481027
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "RSUD KOTA DEPOK"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              106.81779016618401,
+              -6.394359610053726
+            ],
+            [
+              106.81770553022142,
+              -6.394761466072794
+            ],
+            [
+              106.81826976996882,
+              -6.39480819349555
+            ],
+            [
+              106.81835440593142,
+              -6.3944156830050645
+            ],
+            [
+              106.81779016618401,
+              -6.394359610053726
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "jalan dari UI menuju RS UI"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            106.82708293786203,
+            -6.365929096580729
+          ],
+          [
+            106.8291851922541,
+            -6.3727131056248965
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": 6
+    }
+  ]
+}
