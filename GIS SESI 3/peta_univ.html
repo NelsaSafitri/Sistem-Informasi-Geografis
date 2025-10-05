@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Perbandingan CRS - Sebaran Universitas</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #map1, #map2 {
+      height: 400px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Peta 1: Default (Web Mercator / EPSG:3857)</h2>
+  <div id="map1"></div>
+
+  <h2>Peta 2: EPSG:4326 (Koordinat Geografis)</h2>
+  <div id="map2"></div>
+
+  <script>
+    // ============== PETA 1 (Default Web Mercator) =================
+    var map1 = L.map('map1').setView([-6.37, 106.83], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map1);
+
+    // ============== PETA 2 (EPSG:4326) =================
+    var map2 = L.map('map2', {
+      crs: L.CRS.EPSG4326,
+      center: [-6.37, 106.83],
+      zoom: 13
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map2);
+
+    // ============== LOAD GEOJSON DARI FILE =================
+    fetch("univ.geojson")
+      .then(response => response.json())
+      .then(data => {
+
+        // ====== Ikon Kampus ======
+        var campusIcon = L.icon({
+          iconUrl: 'https://cdn-icons-png.flaticon.com/512/2972/2972309.png',
+          iconSize: [35, 35]
+        });
+
+        // ====== Style untuk Polygon & LineString ======
+        function styleFeature(feature) {
+          if (feature.geometry.type === "Polygon") {
+            return { color: "blue", weight: 2, fillColor: "lightblue", fillOpacity: 0.3 };
+          }
+          if (feature.geometry.type === "LineString") {
+            return { color: "red", weight: 3 };
+          }
+        }
+
+        // ====== Tambahkan GeoJSON ke Peta ======
+        function loadGeoJSON(map) {
+          L.geoJSON(data, {
+            pointToLayer: function(feature, latlng) {
+              if (feature.properties.nama) {
+                return L.marker(latlng, { icon: campusIcon })
+                  .bindPopup(`<b>${feature.properties.nama}</b>`);
+              }
+            },
+            style: styleFeature
+          }).addTo(map);
+        }
+
+        // Load ke kedua peta
+        loadGeoJSON(map1);
+        loadGeoJSON(map2);
+      })
+      .catch(err => console.error("Gagal memuat GeoJSON:", err));
+  </script>
+</body>
+</html>
